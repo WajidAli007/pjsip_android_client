@@ -1,0 +1,98 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.sipdemo"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="19"
+8-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="30" />
+9-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:5:5-67
+11-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:5:22-64
+12    <uses-permission android:name="android.permission.USE_SIP" />
+12-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:6:5-66
+12-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:6:22-63
+13    <uses-permission android:name="android.permission.CAMERA" />
+13-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:7:5-65
+13-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:7:22-62
+14    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+14-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:8:5-71
+14-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:8:22-68
+15    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+15-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:9:5-80
+15-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:9:22-77
+16    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+16-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:10:5-75
+16-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:10:22-72
+17    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+17-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:11:5-76
+17-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:11:22-73
+18    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+18-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:12:5-79
+18-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:12:22-76
+19    <uses-permission android:name="android.permission.WAKE_LOCK" />
+19-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:13:5-68
+19-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:13:22-65
+20    <uses-permission android:name="android.permission.VIBRATE" />
+20-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:14:5-66
+20-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:14:22-63
+21
+22    <application
+22-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:16:5-35:19
+23        android:name="com.example.sipdemo.App"
+23-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:17:9-28
+24        android:allowBackup="true"
+24-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:18:9-35
+25        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+25-->[androidx.core:core:1.6.0] C:\Users\pc\.gradle\caches\transforms-2\files-2.1\ba1d9cdeace3374a3d1f11cb4c3f7039\core-1.6.0\AndroidManifest.xml:24:18-86
+26        android:debuggable="true"
+27        android:icon="@mipmap/ic_launcher"
+27-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:19:9-43
+28        android:label="@string/app_name"
+28-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:20:9-41
+29        android:roundIcon="@mipmap/ic_launcher_round"
+29-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:21:9-54
+30        android:supportsRtl="true"
+30-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:22:9-35
+31        android:testOnly="true"
+32        android:theme="@style/Theme.SIPDemo" >
+32-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:23:9-45
+33        <activity android:name="com.example.sipdemo.ui.call.CallActivity" />
+33-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:24:9-58
+33-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:24:19-55
+34        <activity android:name="com.example.sipdemo.LoginActivityActivity" >
+34-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:25:9-31:20
+34-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:25:19-56
+35            <intent-filter>
+35-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:26:13-30:29
+36                <action android:name="android.intent.action.MAIN" />
+36-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:27:17-69
+36-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:27:25-66
+37
+38                <category android:name="android.intent.category.LAUNCHER" />
+38-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:29:17-77
+38-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:29:27-74
+39            </intent-filter>
+40        </activity>
+41        <activity
+41-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:32:9-34:48
+42            android:name="com.example.sipdemo.ui.MainActivity"
+42-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:33:13-44
+43            android:label="@string/app_name" />
+43-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:34:13-45
+44
+45        <service
+45-->[androidx.room:room-runtime:2.3.0] C:\Users\pc\.gradle\caches\transforms-2\files-2.1\aeebb09123eb6d0b495ca1c794c3ab44\room-runtime-2.3.0\AndroidManifest.xml:25:9-28:40
+46            android:name="androidx.room.MultiInstanceInvalidationService"
+46-->[androidx.room:room-runtime:2.3.0] C:\Users\pc\.gradle\caches\transforms-2\files-2.1\aeebb09123eb6d0b495ca1c794c3ab44\room-runtime-2.3.0\AndroidManifest.xml:26:13-74
+47            android:directBootAware="true"
+47-->[androidx.room:room-runtime:2.3.0] C:\Users\pc\.gradle\caches\transforms-2\files-2.1\aeebb09123eb6d0b495ca1c794c3ab44\room-runtime-2.3.0\AndroidManifest.xml:27:13-43
+48            android:exported="false" />
+48-->[androidx.room:room-runtime:2.3.0] C:\Users\pc\.gradle\caches\transforms-2\files-2.1\aeebb09123eb6d0b495ca1c794c3ab44\room-runtime-2.3.0\AndroidManifest.xml:28:13-37
+49    </application>
+50
+51</manifest>

@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">SIPDemo</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_dial">Dial</string>
+    <string name="title_history">History</string>
+    <string name="title_contacts">Contacts</string>
+
+    <string-array name="transport_types">
+        <item>TLS</item>
+        <item>TCP</item>
+        <item>UDP</item>
+    </string-array>
+</resources>
