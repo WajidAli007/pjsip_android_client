@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:2:1-37:12
-INJECTED from D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:2:1-37:12
-INJECTED from D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:2:1-37:12
-INJECTED from D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:2:1-37:12
+ADDED from D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:2:1-39:12
+INJECTED from D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:2:1-39:12
+INJECTED from D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:2:1-39:12
+INJECTED from D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:2:1-39:12
 MERGED from [androidx.databinding:viewbinding:4.2.2] C:\Users\pc\.gradle\caches\transforms-2\files-2.1\a86ea156f1c6c70da169573cb5f0d3f3\viewbinding-4.2.2\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.navigation:navigation-fragment-ktx:2.3.5] C:\Users\pc\.gradle\caches\transforms-2\files-2.1\a285218d675e382402fa8a000eb4bfcc\navigation-fragment-ktx-2.3.5\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.fragment:fragment-ktx:1.2.4] C:\Users\pc\.gradle\caches\transforms-2\files-2.1\5a8a8ec91214e7603fcdfb6095a6dcee\fragment-ktx-1.2.4\AndroidManifest.xml:17:1-24:12
@@ -61,20 +61,20 @@ MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\pc\.gradle\cache
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\pc\.gradle\caches\transforms-2\files-2.1\006f75501ee49bd5eb21e79e4363589a\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] C:\Users\pc\.gradle\caches\transforms-2\files-2.1\76cf6e48a6f215ca02fb8be5d7ec1d75\print-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] C:\Users\pc\.gradle\caches\transforms-2\files-2.1\2309c301d9c715399ce59dfc6758a6c1\annotation-experimental-1.1.0\AndroidManifest.xml:17:1-24:12
-INJECTED from D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:2:1-37:12
-INJECTED from D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:2:1-37:12
-INJECTED from D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:2:1-37:12
+INJECTED from D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:2:1-39:12
+INJECTED from D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:2:1-39:12
+INJECTED from D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:2:1-39:12
 	package
 		ADDED from D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:3:5-34
 		INJECTED from D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml
 		INJECTED from D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml
-		ADDED from D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:2:1-37:12
+		ADDED from D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:2:1-39:12
 		INJECTED from D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml
-		ADDED from D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:2:1-37:12
+		ADDED from D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:2:1-39:12
 		INJECTED from D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:2:11-69
@@ -119,7 +119,7 @@ ADDED from D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifes
 	android:name
 		ADDED from D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:14:22-63
 application
-ADDED from D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:16:5-35:19
+ADDED from D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:16:5-37:19
 MERGED from [com.jakewharton.timber:timber:5.0.1] C:\Users\pc\.gradle\caches\transforms-2\files-2.1\3ed48624317352f7b74cc27717800360\timber-5.0.1\AndroidManifest.xml:7:5-20
 MERGED from [com.jakewharton.timber:timber:5.0.1] C:\Users\pc\.gradle\caches\transforms-2\files-2.1\3ed48624317352f7b74cc27717800360\timber-5.0.1\AndroidManifest.xml:7:5-20
 MERGED from [com.google.android.material:material:1.4.0] C:\Users\pc\.gradle\caches\transforms-2\files-2.1\c78e2c0af5afa33232d9367e0579742a\material-1.4.0\AndroidManifest.xml:22:5-20
@@ -174,6 +174,12 @@ ADDED from D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifes
 		ADDED from D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:34:13-45
 	android:name
 		ADDED from D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:33:13-44
+service#com.example.sipdemo.sip.SipService
+ADDED from D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:36:9-75
+	android:exported
+		ADDED from D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:36:49-73
+	android:name
+		ADDED from D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:36:18-48
 uses-sdk
 INJECTED from D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml

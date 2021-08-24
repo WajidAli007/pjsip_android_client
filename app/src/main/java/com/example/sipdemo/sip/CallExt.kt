@@ -1,8 +1,11 @@
 package com.example.sipdemo.sip
 
+import android.content.Context
+import android.net.ConnectivityManager
+import com.example.sipdemo.App
+import com.google.gson.Gson
 import org.pjsip.pjsua2.*
 import timber.log.Timber
-import java.lang.Exception
 
 /**
  * @Author: Wajid.Ali
@@ -10,17 +13,22 @@ import java.lang.Exception
  */
 class CallExt(account: SipAccountExt, callId: Int) : Call(account, callId) {
 
+    private lateinit var mCallInfo: CallInfo
+
     fun acceptCall() {
         try {
             val callOpParam = CallOpParam()
             callOpParam.statusCode = pjsip_status_code.PJSIP_SC_OK
-
+            callOpParam.opt.audioCount=1
+            callOpParam.opt.videoCount=0
             answer(callOpParam)
         }catch (ex : Exception){
             Timber.e(ex)
         }
 
     }
+
+
 
     fun rejectCall() {
         try {
@@ -49,9 +57,12 @@ class CallExt(account: SipAccountExt, callId: Int) : Call(account, callId) {
         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name}")
     }
 
-    override fun getInfo(): CallInfo {
+    override fun getInfo(): CallInfo? {
         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name}")
-        return super.getInfo()
+        val info = super.getInfo()
+        Timber.e("CallExt: info: ${info.remoteUri}")
+        Timber.e("CallExt: info: ${Gson().toJson(info)}, isNull: ${info == null}")
+        return info
     }
 
     override fun isActive(): Boolean {
@@ -219,8 +230,43 @@ class CallExt(account: SipAccountExt, callId: Int) : Call(account, callId) {
         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name}")
     }
 
+
+    private fun updateCallInfo(): Boolean {
+        return try {
+            info?.let {
+                mCallInfo =it
+            }
+            true
+        } catch (e: java.lang.Exception) {
+            false
+        }
+    }
+
     override fun onCallMediaState(prm: OnCallMediaStateParam?) {
         super.onCallMediaState(prm)
+        Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name} before info")
+        if (!updateCallInfo()) {
+            return
+        }
+
+        val mediaInfoVector: CallMediaInfoVector = mCallInfo.media
+        for (i in 0 until mediaInfoVector.size()) {
+            val mediaInfo = mediaInfoVector[i.toInt()]
+            if (mediaInfo.type == pjmedia_type.PJMEDIA_TYPE_AUDIO && mediaInfo.status == pjsua_call_media_status.PJSUA_CALL_MEDIA_ACTIVE) {
+                var mAudioMedia = AudioMedia.typecastFromMedia(getMedia(i))
+                if (mAudioMedia != null) {
+                    try {
+                       SipService.getInstance().endPoint.audDevManager().captureDevMedia.startTransmit(mAudioMedia)
+                        mAudioMedia.startTransmit(SipService.getInstance().endPoint.audDevManager().playbackDevMedia)
+//                        Log.e("new_logsCall", "onCallMediaState: isMute?:$mCallAudioOnMute")
+                        mAudioMedia.adjustRxLevel(1f)
+                        mAudioMedia.adjustTxLevel(1f)
+                    } catch (e: Exception) {
+                        Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name} Exception")
+                    }
+                }
+            }
+        }
         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name}")
     }
 
@@ -302,6 +348,9 @@ class CallExt(account: SipAccountExt, callId: Int) : Call(account, callId) {
     override fun onCallMediaTransportState(prm: OnCallMediaTransportStateParam?) {
         super.onCallMediaTransportState(prm)
         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name}")
+        if (prm?.state == pjsua_med_tp_st.PJSUA_MED_TP_CREATING) {
+            configureCodecs()
+        }
     }
 
     override fun onCallMediaEvent(prm: OnCallMediaEventParam?) {
@@ -317,5 +366,38 @@ class CallExt(account: SipAccountExt, callId: Int) : Call(account, callId) {
     override fun onCreateMediaTransportSrtp(prm: OnCreateMediaTransportSrtpParam?) {
         super.onCreateMediaTransportSrtp(prm)
         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name}")
+    }
+
+    fun configureCodecs() {
+        codecSetPriority("*", 0) // disables all codecs
+        var priority = 255
+            codecSetPriority("opus/48000/2", priority--)
+            codecSetPriority("iLBC/8000/1", priority--)
+        codecSetPriority("G711u/8000/1", priority--)
+        codecSetPriority("G729/8000/1", priority--)
+        codecSetPriority("PCMU/8000/1", priority--)
+        codecSetPriority("PCMA/8000/1", priority--)
+        if (isConnectedToWifi()) {
+            codecSetPriority("PCMU/8000/1", priority--)
+            codecSetPriority("PCMA/8000/1", priority--)
+        }
+    }
+
+    private fun codecSetPriority(codec: String, priority: Int): Boolean {
+        return try {
+            SipService.getInstance().endPoint.codecSetPriority(codec, priority.toShort())
+            true
+        } catch (e: java.lang.Exception) {
+            Timber.e(
+                "codecSetPriority failed for codec: $codec"
+            )
+            false
+        }
+    }
+
+    private fun isConnectedToWifi(): Boolean {
+        val activeNetworkInfo =
+            (App.getInstance().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager).activeNetworkInfo
+        return activeNetworkInfo != null && activeNetworkInfo.type == ConnectivityManager.TYPE_WIFI
     }
 }

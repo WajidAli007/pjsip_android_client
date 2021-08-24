@@ -42,7 +42,7 @@
 20-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:14:22-63
 21
 22    <application
-22-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:16:5-35:19
+22-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:16:5-37:19
 23        android:name="com.example.sipdemo.App"
 23-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:17:9-28
 24        android:allowBackup="true"
@@ -86,13 +86,19 @@
 43-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:34:13-45
 44
 45        <service
-45-->[androidx.room:room-runtime:2.3.0] C:\Users\pc\.gradle\caches\transforms-2\files-2.1\aeebb09123eb6d0b495ca1c794c3ab44\room-runtime-2.3.0\AndroidManifest.xml:25:9-28:40
-46            android:name="androidx.room.MultiInstanceInvalidationService"
-46-->[androidx.room:room-runtime:2.3.0] C:\Users\pc\.gradle\caches\transforms-2\files-2.1\aeebb09123eb6d0b495ca1c794c3ab44\room-runtime-2.3.0\AndroidManifest.xml:26:13-74
-47            android:directBootAware="true"
-47-->[androidx.room:room-runtime:2.3.0] C:\Users\pc\.gradle\caches\transforms-2\files-2.1\aeebb09123eb6d0b495ca1c794c3ab44\room-runtime-2.3.0\AndroidManifest.xml:27:13-43
-48            android:exported="false" />
-48-->[androidx.room:room-runtime:2.3.0] C:\Users\pc\.gradle\caches\transforms-2\files-2.1\aeebb09123eb6d0b495ca1c794c3ab44\room-runtime-2.3.0\AndroidManifest.xml:28:13-37
-49    </application>
-50
-51</manifest>
+45-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:36:9-75
+46            android:name="com.example.sipdemo.sip.SipService"
+46-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:36:18-48
+47            android:exported="false" />
+47-->D:\Android\Workspace\TestAndDemos\SIPDemo\app\src\main\AndroidManifest.xml:36:49-73
+48        <service
+48-->[androidx.room:room-runtime:2.3.0] C:\Users\pc\.gradle\caches\transforms-2\files-2.1\aeebb09123eb6d0b495ca1c794c3ab44\room-runtime-2.3.0\AndroidManifest.xml:25:9-28:40
+49            android:name="androidx.room.MultiInstanceInvalidationService"
+49-->[androidx.room:room-runtime:2.3.0] C:\Users\pc\.gradle\caches\transforms-2\files-2.1\aeebb09123eb6d0b495ca1c794c3ab44\room-runtime-2.3.0\AndroidManifest.xml:26:13-74
+50            android:directBootAware="true"
+50-->[androidx.room:room-runtime:2.3.0] C:\Users\pc\.gradle\caches\transforms-2\files-2.1\aeebb09123eb6d0b495ca1c794c3ab44\room-runtime-2.3.0\AndroidManifest.xml:27:13-43
+51            android:exported="false" />
+51-->[androidx.room:room-runtime:2.3.0] C:\Users\pc\.gradle\caches\transforms-2\files-2.1\aeebb09123eb6d0b495ca1c794c3ab44\room-runtime-2.3.0\AndroidManifest.xml:28:13-37
+52    </application>
+53
+54</manifest>

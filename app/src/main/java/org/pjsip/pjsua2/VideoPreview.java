@@ -43,11 +43,11 @@ public class VideoPreview {
     return pjsua2JNI.VideoPreview_hasNative(swigCPtr, this);
   }
 
-  public void start(VideoPreviewOpParam param) throws Exception {
+  public void start(VideoPreviewOpParam param) throws java.lang.Exception {
     pjsua2JNI.VideoPreview_start(swigCPtr, this, VideoPreviewOpParam.getCPtr(param), param);
   }
 
-  public void stop() throws Exception {
+  public void stop() throws java.lang.Exception {
     pjsua2JNI.VideoPreview_stop(swigCPtr, this);
   }
 

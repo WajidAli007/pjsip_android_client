@@ -35,9 +35,9 @@ public final class MyRoomDatabase_Impl extends MyRoomDatabase {
     final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(configuration, new RoomOpenHelper.Delegate(2) {
       @Override
       public void createAllTables(SupportSQLiteDatabase _db) {
-        _db.execSQL("CREATE TABLE IF NOT EXISTS `SipAccount` (`sipAccountId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `domain` TEXT NOT NULL, `userName` TEXT NOT NULL, `displayName` TEXT NOT NULL, `password` TEXT NOT NULL, `port` TEXT NOT NULL, `transport` TEXT NOT NULL)");
+        _db.execSQL("CREATE TABLE IF NOT EXISTS `SipAccount` (`sipAccountId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `domain` TEXT NOT NULL, `userName` TEXT NOT NULL, `displayName` TEXT NOT NULL, `password` TEXT NOT NULL, `port` TEXT NOT NULL, `transport` TEXT NOT NULL, `isSelf` INTEGER NOT NULL)");
         _db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'ffa6f9cd1861361b6e226168c5f3066f')");
+        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'f59154861fe05f6a14b77bb4d0930055')");
       }
 
       @Override
@@ -81,7 +81,7 @@ public final class MyRoomDatabase_Impl extends MyRoomDatabase {
 
       @Override
       protected RoomOpenHelper.ValidationResult onValidateSchema(SupportSQLiteDatabase _db) {
-        final HashMap<String, TableInfo.Column> _columnsSipAccount = new HashMap<String, TableInfo.Column>(7);
+        final HashMap<String, TableInfo.Column> _columnsSipAccount = new HashMap<String, TableInfo.Column>(8);
         _columnsSipAccount.put("sipAccountId", new TableInfo.Column("sipAccountId", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsSipAccount.put("domain", new TableInfo.Column("domain", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsSipAccount.put("userName", new TableInfo.Column("userName", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
@@ -89,6 +89,7 @@ public final class MyRoomDatabase_Impl extends MyRoomDatabase {
         _columnsSipAccount.put("password", new TableInfo.Column("password", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsSipAccount.put("port", new TableInfo.Column("port", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsSipAccount.put("transport", new TableInfo.Column("transport", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsSipAccount.put("isSelf", new TableInfo.Column("isSelf", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         final HashSet<TableInfo.ForeignKey> _foreignKeysSipAccount = new HashSet<TableInfo.ForeignKey>(0);
         final HashSet<TableInfo.Index> _indicesSipAccount = new HashSet<TableInfo.Index>(0);
         final TableInfo _infoSipAccount = new TableInfo("SipAccount", _columnsSipAccount, _foreignKeysSipAccount, _indicesSipAccount);
@@ -100,7 +101,7 @@ public final class MyRoomDatabase_Impl extends MyRoomDatabase {
         }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "ffa6f9cd1861361b6e226168c5f3066f", "c08d29dddf145bb66c18a7a66cfbc90e");
+    }, "f59154861fe05f6a14b77bb4d0930055", "6cd504ce42d33c316abaeff3a11e7b41");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(configuration.context)
         .name(configuration.name)
         .callback(_openCallback)

@@ -30,7 +30,7 @@ public final class SipAccountDao_Impl implements SipAccountDao {
     this.__insertionAdapterOfSipAccount = new EntityInsertionAdapter<SipAccount>(__db) {
       @Override
       public String createQuery() {
-        return "INSERT OR REPLACE INTO `SipAccount` (`sipAccountId`,`domain`,`userName`,`displayName`,`password`,`port`,`transport`) VALUES (nullif(?, 0),?,?,?,?,?,?)";
+        return "INSERT OR REPLACE INTO `SipAccount` (`sipAccountId`,`domain`,`userName`,`displayName`,`password`,`port`,`transport`,`isSelf`) VALUES (nullif(?, 0),?,?,?,?,?,?,?)";
       }
 
       @Override
@@ -66,6 +66,9 @@ public final class SipAccountDao_Impl implements SipAccountDao {
         } else {
           stmt.bindString(7, value.getTransport());
         }
+        final int _tmp;
+        _tmp = value.isSelf() ? 1 : 0;
+        stmt.bindLong(8, _tmp);
       }
     };
     this.__deletionAdapterOfSipAccount = new EntityDeletionOrUpdateAdapter<SipAccount>(__db) {
@@ -119,6 +122,7 @@ public final class SipAccountDao_Impl implements SipAccountDao {
       final int _cursorIndexOfPassword = CursorUtil.getColumnIndexOrThrow(_cursor, "password");
       final int _cursorIndexOfPort = CursorUtil.getColumnIndexOrThrow(_cursor, "port");
       final int _cursorIndexOfTransport = CursorUtil.getColumnIndexOrThrow(_cursor, "transport");
+      final int _cursorIndexOfIsSelf = CursorUtil.getColumnIndexOrThrow(_cursor, "isSelf");
       final List<SipAccount> _result = new ArrayList<SipAccount>(_cursor.getCount());
       while(_cursor.moveToNext()) {
         final SipAccount _item;
@@ -160,7 +164,11 @@ public final class SipAccountDao_Impl implements SipAccountDao {
         } else {
           _tmpTransport = _cursor.getString(_cursorIndexOfTransport);
         }
-        _item = new SipAccount(_tmpSipAccountId,_tmpDomain,_tmpUserName,_tmpDisplayName,_tmpPassword,_tmpPort,_tmpTransport);
+        final boolean _tmpIsSelf;
+        final int _tmp;
+        _tmp = _cursor.getInt(_cursorIndexOfIsSelf);
+        _tmpIsSelf = _tmp != 0;
+        _item = new SipAccount(_tmpSipAccountId,_tmpDomain,_tmpUserName,_tmpDisplayName,_tmpPassword,_tmpPort,_tmpTransport,_tmpIsSelf);
         _result.add(_item);
       }
       return _result;

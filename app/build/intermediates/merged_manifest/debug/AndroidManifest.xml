@@ -43,6 +43,9 @@
             android:label="@string/app_name" />
 
         <service
+            android:name="com.example.sipdemo.sip.SipService"
+            android:exported="false" />
+        <service
             android:name="androidx.room.MultiInstanceInvalidationService"
             android:directBootAware="true"
             android:exported="false" />

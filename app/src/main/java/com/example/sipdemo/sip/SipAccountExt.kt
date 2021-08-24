@@ -1,9 +1,9 @@
 package com.example.sipdemo.sip
 
-import android.content.Intent
-import com.example.sipdemo.ui.MainActivity
-import com.example.sipdemo.ui.call.CallActivity
+import com.example.sipdemo.sip.events.CallState
+import com.example.sipdemo.sip.events.CallStateEnum
 import com.google.gson.Gson
+import org.greenrobot.eventbus.EventBus
 import org.pjsip.pjsua2.*
 import timber.log.Timber
 
@@ -13,11 +13,9 @@ import timber.log.Timber
  */
 class SipAccountExt : Account() {
 
-    companion object{
-        var inProgressCall : CallExt? = null
+    companion object {
+        var inProgressCall: CallExt? = null
     }
-
-    var mainActivity : MainActivity? = null
 
     override fun onIncomingCall(prm: OnIncomingCallParam?) {
         super.onIncomingCall(prm)
@@ -28,22 +26,12 @@ class SipAccountExt : Account() {
         Timber.e("newIncomingCall: rData.wholeMsg:${prm?.rdata?.wholeMsg}")
         Timber.e("newIncomingCall: rData.pjRxData:${prm?.rdata?.pjRxData}")
 
-        if(mainActivity != null){
-            inProgressCall = CallExt(this, prm?.callId!!)
-            val callOpParam = CallOpParam()
-            callOpParam.statusCode = pjsip_status_code.PJSIP_SC_RINGING
+        inProgressCall = CallExt(this, prm?.callId!!)
+        val callOpParam = CallOpParam()
+        callOpParam.statusCode = pjsip_status_code.PJSIP_SC_RINGING
+        inProgressCall?.answer(callOpParam)
 
-            inProgressCall?.answer(callOpParam)
-
-            val intent = Intent(mainActivity, CallActivity::class.java)
-            mainActivity?.startActivity(intent)
-        }else{
-            val call = Call(this, prm?.callId!!)
-            val callOpParam = CallOpParam()
-            callOpParam.statusCode = pjsip_status_code.PJSIP_SC_BUSY_HERE
-
-            call.answer(callOpParam)
-        }
+        EventBus.getDefault().post(CallState(CallStateEnum.NEW_INCOMING_CALL))
 
     }
 
