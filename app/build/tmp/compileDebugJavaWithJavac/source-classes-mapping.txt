@@ -152,6 +152,8 @@ org/pjsip/pjsua2/ToneDescVector.java
  org.pjsip.pjsua2.ToneDescVector
 org/pjsip/pjsua2/CallSetting.java
  org.pjsip.pjsua2.CallSetting
+com/example/sipdemo/databinding/FragmentChatHeadsBinding.java
+ com.example.sipdemo.databinding.FragmentChatHeadsBinding
 org/pjsip/pjsua2/CallSendRequestParam.java
  org.pjsip.pjsua2.CallSendRequestParam
 com/example/sipdemo/databinding/ActivityLoginBinding.java
@@ -399,8 +401,6 @@ org/pjsip/pjsua2/TxErrorEvent.java
  org.pjsip.pjsua2.TxErrorEvent
 org/pjsip/pjsua2/pjsip_transport_flags_e.java
  org.pjsip.pjsua2.pjsip_transport_flags_e
-com/example/sipdemo/databinding/FragmentContactsBinding.java
- com.example.sipdemo.databinding.FragmentContactsBinding
 org/pjsip/pjsua2/OnTypingIndicationParam.java
  org.pjsip.pjsua2.OnTypingIndicationParam
 org/pjsip/pjsua2/pjsua2Constants.java
@@ -429,6 +429,8 @@ org/pjsip/pjsua2/MediaEvent.java
  org.pjsip.pjsua2.MediaEvent
 org/pjsip/pjsua2/VideoWindow.java
  org.pjsip.pjsua2.VideoWindow
+com/example/sipdemo/databinding/FragmentChatsBinding.java
+ com.example.sipdemo.databinding.FragmentChatsBinding
 org/pjsip/pjsua2/pjmedia_srtp_crypto_option.java
  org.pjsip.pjsua2.pjmedia_srtp_crypto_option
 org/pjsip/pjsua2/AccountCallConfig.java

@@ -70,13 +70,13 @@ class SipService : Service() {
             epConfig.logConfig.consoleLevel = Log.VERBOSE.toLong()
 
 
-            val writer = LogWriter()
+//            val writer = LogWriter()
 
             epConfig.logConfig.decor = 0
             epConfig.logConfig.msgLogging = 1
             epConfig.logConfig.level = 5
             epConfig.logConfig.consoleLevel = 5
-            epConfig.logConfig.writer = writer
+//            epConfig.logConfig.writer = writer
 
             endPoint.libInit(epConfig)
 
@@ -124,8 +124,8 @@ class SipService : Service() {
 
     private class LogWriter : org.pjsip.pjsua2.LogWriter() {
         override fun write(entry: LogEntry?) {
-            val message = entry?.msg
-            Log.v("pjsip", message ?: "empty log message from sip")
+//            val message = entry?.msg
+//            Log.v("pjsip", message ?: "empty log message from sip")
         }
     }
 }

@@ -1,10 +1,10 @@
-package com.example.sipdemo.ui.contacts
+package com.example.sipdemo.ui.chat.messages
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class ContactsViewModel : ViewModel() {
+class ChatMessagesViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is notifications Fragment"

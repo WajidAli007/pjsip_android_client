@@ -4,6 +4,7 @@ package com.example.sipdemo.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -22,13 +23,22 @@ public final class ActivityMainBinding implements ViewBinding {
   public final ConstraintLayout container;
 
   @NonNull
+  public final ConstraintLayout header;
+
+  @NonNull
   public final BottomNavigationView navView;
 
+  @NonNull
+  public final TextView tvStatus;
+
   private ActivityMainBinding(@NonNull ConstraintLayout rootView,
-      @NonNull ConstraintLayout container, @NonNull BottomNavigationView navView) {
+      @NonNull ConstraintLayout container, @NonNull ConstraintLayout header,
+      @NonNull BottomNavigationView navView, @NonNull TextView tvStatus) {
     this.rootView = rootView;
     this.container = container;
+    this.header = header;
     this.navView = navView;
+    this.tvStatus = tvStatus;
   }
 
   @Override
@@ -60,13 +70,26 @@ public final class ActivityMainBinding implements ViewBinding {
     missingId: {
       ConstraintLayout container = (ConstraintLayout) rootView;
 
+      id = R.id.header;
+      ConstraintLayout header = rootView.findViewById(id);
+      if (header == null) {
+        break missingId;
+      }
+
       id = R.id.nav_view;
       BottomNavigationView navView = rootView.findViewById(id);
       if (navView == null) {
         break missingId;
       }
 
-      return new ActivityMainBinding((ConstraintLayout) rootView, container, navView);
+      id = R.id.tvStatus;
+      TextView tvStatus = rootView.findViewById(id);
+      if (tvStatus == null) {
+        break missingId;
+      }
+
+      return new ActivityMainBinding((ConstraintLayout) rootView, container, header, navView,
+          tvStatus);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

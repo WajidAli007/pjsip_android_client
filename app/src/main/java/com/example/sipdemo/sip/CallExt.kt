@@ -3,7 +3,9 @@ package com.example.sipdemo.sip
 import android.content.Context
 import android.net.ConnectivityManager
 import com.example.sipdemo.App
+import com.example.sipdemo.sip.events.CallState
 import com.google.gson.Gson
+import org.greenrobot.eventbus.EventBus
 import org.pjsip.pjsua2.*
 import timber.log.Timber
 
@@ -221,8 +223,25 @@ class CallExt(account: SipAccountExt, callId: Int) : Call(account, callId) {
     }
 
     override fun onCallState(prm: OnCallStateParam?) {
-        super.onCallState(prm)
+//        super.onCallState(prm)
+        Timber.e("Printing call state")
+        val state = info?.state
+        when(state){
+            pjsip_inv_state.PJSIP_INV_STATE_NULL -> Timber.e("Pjsip call state  is null")
+            pjsip_inv_state.PJSIP_INV_STATE_CALLING -> Timber.e("Pjsip call state  is calling")
+            pjsip_inv_state.PJSIP_INV_STATE_CONFIRMED -> Timber.e("Pjsip call state  is confirmed")
+            pjsip_inv_state.PJSIP_INV_STATE_CONNECTING -> Timber.e("Pjsip call state  is connecting")
+            pjsip_inv_state.PJSIP_INV_STATE_DISCONNECTED -> Timber.e("Pjsip call state  is disconnected")
+            pjsip_inv_state.PJSIP_INV_STATE_EARLY -> Timber.e("Pjsip call state  is early")
+            pjsip_inv_state.PJSIP_INV_STATE_INCOMING -> Timber.e("Pjsip call state  is incoming")
+            else -> {
+                Timber.e("else state in call state printing")
+            }
+        }
         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name}")
+        if(state != null && state != pjsip_inv_state.PJSIP_INV_STATE_INCOMING && state != pjsip_inv_state.PJSIP_INV_STATE_EARLY){
+            EventBus.getDefault().post(CallState(state))
+        }
     }
 
     override fun onCallTsxState(prm: OnCallTsxStateParam?) {

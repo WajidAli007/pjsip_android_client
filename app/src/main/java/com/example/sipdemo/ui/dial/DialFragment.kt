@@ -1,5 +1,6 @@
 package com.example.sipdemo.ui.dial
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import com.example.sipdemo.databinding.FragmentDialBinding
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
+import timber.log.Timber
 
 class DialFragment : Fragment() {
 
@@ -41,23 +43,16 @@ class DialFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        EventBus.getDefault().register(this)
-    }
 
-    override fun onStop() {
-        super.onStop()
-        if(EventBus.getDefault().isRegistered(this)){
-            EventBus.getDefault().unregister(this)
-        }
+        Timber.e("architeuture: " + if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+            Build.CPU_ABI;
+        } else {
+            Build.SUPPORTED_ABIS[0];
+        })
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
-    fun statusChanged(status : ConnectionStatusChangedEvent){
-        binding.tvStatus.text = "Status: ${status.statusMsg}"
     }
 }

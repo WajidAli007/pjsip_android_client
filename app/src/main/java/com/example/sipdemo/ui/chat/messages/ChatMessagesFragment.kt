@@ -1,4 +1,4 @@
-package com.example.sipdemo.ui.contacts
+package com.example.sipdemo.ui.chat.messages
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,12 +8,12 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.sipdemo.databinding.FragmentContactsBinding
+import com.example.sipdemo.databinding.FragmentChatsBinding
 
-class ContactsFragment : Fragment() {
+class ChatMessagesFragment : Fragment() {
 
-    private lateinit var contactsViewModel: ContactsViewModel
-    private var _binding: FragmentContactsBinding? = null
+    private lateinit var chatMessagesViewModel: ChatMessagesViewModel
+    private var _binding: FragmentChatsBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -24,14 +24,14 @@ class ContactsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        contactsViewModel =
-            ViewModelProvider(this).get(ContactsViewModel::class.java)
+        chatMessagesViewModel =
+            ViewModelProvider(this).get(ChatMessagesViewModel::class.java)
 
-        _binding = FragmentContactsBinding.inflate(inflater, container, false)
+        _binding = FragmentChatsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val textView: TextView = binding.textNotifications
-        contactsViewModel.text.observe(viewLifecycleOwner, Observer {
+        chatMessagesViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root

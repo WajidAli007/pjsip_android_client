@@ -4,8 +4,8 @@ package com.example.sipdemo.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -20,16 +20,20 @@ public final class FragmentDialBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
+  public final Button btnCall;
+
+  @NonNull
   public final EditText etSipAddress;
 
   @NonNull
-  public final TextView tvStatus;
+  public final View view;
 
-  private FragmentDialBinding(@NonNull ConstraintLayout rootView, @NonNull EditText etSipAddress,
-      @NonNull TextView tvStatus) {
+  private FragmentDialBinding(@NonNull ConstraintLayout rootView, @NonNull Button btnCall,
+      @NonNull EditText etSipAddress, @NonNull View view) {
     this.rootView = rootView;
+    this.btnCall = btnCall;
     this.etSipAddress = etSipAddress;
-    this.tvStatus = tvStatus;
+    this.view = view;
   }
 
   @Override
@@ -59,19 +63,25 @@ public final class FragmentDialBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.btnCall;
+      Button btnCall = rootView.findViewById(id);
+      if (btnCall == null) {
+        break missingId;
+      }
+
       id = R.id.etSipAddress;
       EditText etSipAddress = rootView.findViewById(id);
       if (etSipAddress == null) {
         break missingId;
       }
 
-      id = R.id.tvStatus;
-      TextView tvStatus = rootView.findViewById(id);
-      if (tvStatus == null) {
+      id = R.id.view;
+      View view = rootView.findViewById(id);
+      if (view == null) {
         break missingId;
       }
 
-      return new FragmentDialBinding((ConstraintLayout) rootView, etSipAddress, tvStatus);
+      return new FragmentDialBinding((ConstraintLayout) rootView, btnCall, etSipAddress, view);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

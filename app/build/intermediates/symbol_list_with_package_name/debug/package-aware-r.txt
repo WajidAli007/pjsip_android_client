@@ -1968,6 +1968,7 @@ id bounceEnd
 id bounceStart
 id btnAcceptCall
 id btnAddAccount
+id btnCall
 id btnRejectCall
 id buttonPanel
 id cache_measures
@@ -2076,6 +2077,7 @@ id group_divider
 id grouping
 id groups
 id guideline
+id header
 id header_title
 id hideable
 id home
@@ -2342,6 +2344,7 @@ id unlabeled
 id up
 id useLogo
 id vertical_only
+id view
 id view_offset_helper
 id view_transition
 id view_tree_lifecycle_owner
@@ -2445,7 +2448,8 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
-layout fragment_contacts
+layout fragment_chat_heads
+layout fragment_chats
 layout fragment_dial
 layout fragment_history
 layout material_chip_input_combo

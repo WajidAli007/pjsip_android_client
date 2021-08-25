@@ -40,6 +40,10 @@
         "source": "D:\\Android\\Workspace\\TestAndDemos\\SIPDemo\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_notifications_black_24dp.xml"
     },
     {
+        "merged": "D:\\Android\\Workspace\\TestAndDemos\\SIPDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_chat_heads.xml.flat",
+        "source": "D:\\Android\\Workspace\\TestAndDemos\\SIPDemo\\app\\src\\main\\res\\layout\\fragment_chat_heads.xml"
+    },
+    {
         "merged": "D:\\Android\\Workspace\\TestAndDemos\\SIPDemo\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_launcher_background.png.flat",
         "source": "D:\\Android\\Workspace\\TestAndDemos\\SIPDemo\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_launcher_background.png"
     },
@@ -140,10 +144,6 @@
         "source": "D:\\Android\\Workspace\\TestAndDemos\\SIPDemo\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
     },
     {
-        "merged": "D:\\Android\\Workspace\\TestAndDemos\\SIPDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_contacts.xml.flat",
-        "source": "D:\\Android\\Workspace\\TestAndDemos\\SIPDemo\\app\\src\\main\\res\\layout\\fragment_contacts.xml"
-    },
-    {
         "merged": "D:\\Android\\Workspace\\TestAndDemos\\SIPDemo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
         "source": "D:\\Android\\Workspace\\TestAndDemos\\SIPDemo\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
     },
@@ -194,6 +194,10 @@
     {
         "merged": "D:\\Android\\Workspace\\TestAndDemos\\SIPDemo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
         "source": "D:\\Android\\Workspace\\TestAndDemos\\SIPDemo\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "D:\\Android\\Workspace\\TestAndDemos\\SIPDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_chats.xml.flat",
+        "source": "D:\\Android\\Workspace\\TestAndDemos\\SIPDemo\\app\\src\\main\\res\\layout\\fragment_chats.xml"
     },
     {
         "merged": "D:\\Android\\Workspace\\TestAndDemos\\SIPDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_history.xml.flat",

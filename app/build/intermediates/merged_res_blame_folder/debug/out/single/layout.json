@@ -20,7 +20,15 @@
         "source": "D:\\Android\\Workspace\\TestAndDemos\\SIPDemo\\app\\src\\main\\res\\layout\\activity_call.xml"
     },
     {
+        "merged": "D:\\Android\\Workspace\\TestAndDemos\\SIPDemo\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_chats.xml",
+        "source": "D:\\Android\\Workspace\\TestAndDemos\\SIPDemo\\app\\src\\main\\res\\layout\\fragment_chats.xml"
+    },
+    {
         "merged": "D:\\Android\\Workspace\\TestAndDemos\\SIPDemo\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_contacts.xml",
         "source": "D:\\Android\\Workspace\\TestAndDemos\\SIPDemo\\app\\src\\main\\res\\layout\\fragment_contacts.xml"
+    },
+    {
+        "merged": "D:\\Android\\Workspace\\TestAndDemos\\SIPDemo\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_chat_heads.xml",
+        "source": "D:\\Android\\Workspace\\TestAndDemos\\SIPDemo\\app\\src\\main\\res\\layout\\fragment_chat_heads.xml"
     }
 ]

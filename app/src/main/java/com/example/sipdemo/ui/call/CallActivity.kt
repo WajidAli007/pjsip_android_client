@@ -3,10 +3,11 @@ package com.example.sipdemo.ui.call
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.sipdemo.R
+import com.example.sipdemo.base.BaseActivity
 import com.example.sipdemo.databinding.ActivityCallBinding
 import com.example.sipdemo.sip.SipAccountExt
 
-class CallActivity : AppCompatActivity() {
+class CallActivity : BaseActivity() {
 
     val binding : ActivityCallBinding by lazy{
         ActivityCallBinding.inflate(layoutInflater)
@@ -33,6 +34,19 @@ class CallActivity : AppCompatActivity() {
         binding.btnRejectCall.setOnClickListener {
             SipAccountExt.inProgressCall?.rejectCall()
         }
+
+    }
+
+    override fun callDisconnected() {
+        SipAccountExt.inProgressCall = null
+        finish()
+    }
+
+    override fun callStateConfirmed() {
+
+    }
+
+    override fun connecting() {
 
     }
 }

@@ -1,7 +1,7 @@
 package com.example.sipdemo.sip
 
 import com.example.sipdemo.sip.events.CallState
-import com.example.sipdemo.sip.events.CallStateEnum
+import com.example.sipdemo.sip.events.ConnectionState
 import com.google.gson.Gson
 import org.greenrobot.eventbus.EventBus
 import org.pjsip.pjsua2.*
@@ -31,7 +31,7 @@ class SipAccountExt : Account() {
         callOpParam.statusCode = pjsip_status_code.PJSIP_SC_RINGING
         inProgressCall?.answer(callOpParam)
 
-        EventBus.getDefault().post(CallState(CallStateEnum.NEW_INCOMING_CALL))
+        EventBus.getDefault().post(CallState(pjsip_inv_state.PJSIP_INV_STATE_INCOMING))
 
     }
 
@@ -73,7 +73,16 @@ class SipAccountExt : Account() {
     override fun onRegState(prm: OnRegStateParam?) {
         super.onRegState(prm)
         Timber.e("SIPAccountExt: ${object : Any() {}.javaClass.enclosingMethod.name}")
-        Timber.e("onRegState: ${Gson().toJson(prm)}")
+        Timber.e("SIPAccountExt code: ${prm?.code?.toString()}")
+        Timber.e("SIPAccountExt reason: ${prm?.reason}")
+        Timber.e("SIPAccountExt status: ${prm?.status}")
+        Timber.e("SIPAccountExt rdata info: ${prm?.rdata?.info}")
+        Timber.e("SIPAccountExt rdata srcAddress: ${prm?.rdata?.srcAddress}")
+        Timber.e("SIPAccountExt rdata wholeMessage: ${prm?.rdata?.wholeMsg}")
+        val code = prm?.code
+        if(code != null){
+            EventBus.getDefault().post(ConnectionState(code))
+        }
     }
 
     override fun onTypingIndication(prm: OnTypingIndicationParam?) {
