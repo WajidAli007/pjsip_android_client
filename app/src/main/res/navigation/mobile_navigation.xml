@@ -7,19 +7,22 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.sipdemo.ui.dial.DialFragment"
-        android:label="@string/title_home"
+        android:name="com.example.sipdemo.ui.home.HomeFragment"
         tools:layout="@layout/fragment_dial" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.sipdemo.ui.history.HistoryFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_history" />
+        android:id="@+id/navigation_contacts"
+        android:name="com.example.sipdemo.ui.contacts.ContactsFragment"
+        tools:layout="@layout/fragment_contacts" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_chat"
         android:name="com.example.sipdemo.ui.chat.heads.ChatHeadsFragment"
-        android:label="@string/title_notifications"
         tools:layout="@layout/fragment_chats" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.example.sipdemo.ui.profile.ProfileFragment"
+        tools:layout="@layout/fragment_profile" />
+
 </navigation>
