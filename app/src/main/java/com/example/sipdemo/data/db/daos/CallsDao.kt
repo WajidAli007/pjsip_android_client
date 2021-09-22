@@ -14,18 +14,12 @@ import com.example.sipdemo.data.db.entities.SipAccount
 interface CallsDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertChat(call : Calls)
+    fun insertCall(call : Calls)
 
     @Query("SELECT * FROM calls")
-    fun getAllChats() : List<Calls>
+    fun getAllCalls() : List<Calls>
 
     @Delete
-    fun deleteChat(call : Calls)
-
-    @Query("SELECT DISTINCT userId from chat")
-    fun getChatUniqueUsers() : List<Long>
-
-    @Query("SELECT * FROM chat WHERE userId = :userId ORDER BY timeStamp")
-    fun getUserChatHistory(userId : Long) : List<Chat>
+    fun deleteCall(call : Calls)
 
 }

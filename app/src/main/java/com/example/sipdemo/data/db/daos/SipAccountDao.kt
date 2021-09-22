@@ -15,6 +15,9 @@ import com.example.sipdemo.data.db.entities.SipAccount
     @Query("SELECT * FROM sipaccount")
     fun getSipAccounts() : List<SipAccount>
 
+    @Query("SELECT * FROM sipaccount WHERE userName = :userName")
+    fun getSipAccountByUsername(userName : String) : SipAccount?
+
     @Delete
     fun deleteAccount(account: SipAccount)
 }

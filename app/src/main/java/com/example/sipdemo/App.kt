@@ -2,6 +2,7 @@ package com.example.sipdemo
 
 import android.os.Build
 import androidx.multidex.MultiDexApplication
+import com.example.sipdemo.sip.SipService
 import timber.log.Timber
 
 /**
@@ -38,6 +39,7 @@ class App : MultiDexApplication() {
     override fun onTerminate() {
         super.onTerminate()
         instance = null
+        SipService.getInstance().killService()
     }
 
 }

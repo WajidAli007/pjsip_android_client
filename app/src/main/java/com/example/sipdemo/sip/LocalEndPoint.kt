@@ -10,28 +10,33 @@ import timber.log.Timber
 class LocalEndPoint : Endpoint() {
 
     override fun swigDirectorDisconnect() {
-        super.swigDirectorDisconnect()
+
         Timber.e("LocalEndPoint: ${object : Any() {}.javaClass.enclosingMethod.name}")
+        super.swigDirectorDisconnect()
     }
 
     override fun swigReleaseOwnership() {
-        super.swigReleaseOwnership()
+
         Timber.e("LocalEndPoint: ${object : Any() {}.javaClass.enclosingMethod.name}")
+        super.swigReleaseOwnership()
     }
 
     override fun swigTakeOwnership() {
-        super.swigTakeOwnership()
+
         Timber.e("LocalEndPoint: ${object : Any() {}.javaClass.enclosingMethod.name}")
+        super.swigTakeOwnership()
     }
 
     override fun libDestroy(prmFlags: Long) {
-        super.libDestroy(prmFlags)
+
         Timber.e("LocalEndPoint: ${object : Any() {}.javaClass.enclosingMethod.name}")
+        super.libDestroy(prmFlags)
     }
 
     override fun libDestroy() {
-        super.libDestroy()
+
         Timber.e("LocalEndPoint: ${object : Any() {}.javaClass.enclosingMethod.name}")
+        super.libDestroy()
     }
 
     override fun libVersion(): Version {
@@ -40,8 +45,9 @@ class LocalEndPoint : Endpoint() {
     }
 
     override fun libCreate() {
-        super.libCreate()
+
         Timber.e("LocalEndPoint: ${object : Any() {}.javaClass.enclosingMethod.name}")
+        super.libCreate()
     }
 
     override fun libGetState(): pjsua_state {

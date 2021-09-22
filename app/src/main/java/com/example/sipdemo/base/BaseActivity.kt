@@ -31,7 +31,7 @@ abstract class BaseActivity : AppCompatActivity(){
     fun onCallState(callState : CallState){
         when(callState.callStateEnum){
             pjsip_inv_state.PJSIP_INV_STATE_INCOMING -> newCall()
-            pjsip_inv_state.PJSIP_INV_STATE_EARLY -> newCall()
+            pjsip_inv_state.PJSIP_INV_STATE_EARLY -> callRinging()
             pjsip_inv_state.PJSIP_INV_STATE_DISCONNECTED -> callDisconnected()
             pjsip_inv_state.PJSIP_INV_STATE_CONNECTING -> connecting()
             pjsip_inv_state.PJSIP_INV_STATE_CONFIRMED -> callStateConfirmed()
@@ -56,4 +56,5 @@ abstract class BaseActivity : AppCompatActivity(){
     open fun callDisconnected(){}
     open fun connecting() {}
     open fun callStateConfirmed() {}
+    open fun callRinging() {}
 }

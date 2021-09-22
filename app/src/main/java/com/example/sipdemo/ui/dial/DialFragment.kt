@@ -7,8 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.sipdemo.base.BaseActivity
 import com.example.sipdemo.data.eventbus.ConnectionStatusChangedEvent
 import com.example.sipdemo.databinding.FragmentDialBinding
+import com.example.sipdemo.ui.call.CallActivity
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -38,6 +40,16 @@ class DialFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.btnCall.setOnClickListener {
+            val sipAddress = binding.etSipAddress.text.toString()
+            Timber.e("sip address got: $sipAddress")
+            if(dialViewModel.proceedToCall(sipAddress)){
+                Timber.e("proceeding to call")
+                val address = if(sipAddress.startsWith("sip:")) sipAddress else "sip:$sipAddress"
+                Timber.e("proceeding to start activity")
+                requireActivity().startActivity(CallActivity.createIntent(requireActivity() as BaseActivity, address, true))
+            }
+        }
 
     }
 
@@ -45,9 +57,9 @@ class DialFragment : Fragment() {
         super.onStart()
 
         Timber.e("architeuture: " + if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-            Build.CPU_ABI;
+            Build.CPU_ABI
         } else {
-            Build.SUPPORTED_ABIS[0];
+            Build.SUPPORTED_ABIS[0]
         })
     }
 

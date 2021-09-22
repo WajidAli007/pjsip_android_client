@@ -26,7 +26,7 @@ class SipAccountExt : Account() {
         Timber.e("newIncomingCall: rData.wholeMsg:${prm?.rdata?.wholeMsg}")
         Timber.e("newIncomingCall: rData.pjRxData:${prm?.rdata?.pjRxData}")
 
-        inProgressCall = CallExt(this, prm?.callId!!)
+        inProgressCall = CallExt(this, prm?.callId!!, false)
         val callOpParam = CallOpParam()
         callOpParam.statusCode = pjsip_status_code.PJSIP_SC_RINGING
         inProgressCall?.answer(callOpParam)

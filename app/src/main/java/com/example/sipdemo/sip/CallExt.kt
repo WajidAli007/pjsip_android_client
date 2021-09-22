@@ -13,31 +13,40 @@ import timber.log.Timber
  * @Author: Wajid.Ali
  * @Date: 8/23/2021
  */
-class CallExt(account: SipAccountExt, callId: Int) : Call(account, callId) {
+class CallExt : Call {
+
+    constructor(account : SipAccountExt, isOutgoing : Boolean) : super(account){
+        this.callId = callId
+        this.isOutgoing = isOutgoing
+    }
+
+    constructor(account : SipAccountExt, callId: Int, isOutgoing : Boolean) : super(account,callId){
+        this.callId = callId
+        this.isOutgoing = isOutgoing
+    }
 
     private lateinit var mCallInfo: CallInfo
+    var callId : Int = -1
+
+    var streamInfo : StreamInfo? = null
+    var streamStat : StreamStat? = null
+    var isOutgoing : Boolean = false
 
     fun acceptCall() {
         try {
             val callOpParam = CallOpParam()
             callOpParam.statusCode = pjsip_status_code.PJSIP_SC_OK
-            callOpParam.opt.audioCount=1
-            callOpParam.opt.videoCount=0
             answer(callOpParam)
         }catch (ex : Exception){
             Timber.e(ex)
         }
-
     }
-
 
 
     fun rejectCall() {
         try {
             val callOpParam = CallOpParam()
-            callOpParam.statusCode = pjsip_status_code.PJSIP_SC_DECLINE
-//
-//            answer(callOpParam)
+            callOpParam.statusCode = pjsip_status_code.PJSIP_SC_GONE
             hangup(callOpParam)
         }catch (ex : Exception){
             Timber.e(ex)
@@ -45,18 +54,21 @@ class CallExt(account: SipAccountExt, callId: Int) : Call(account, callId) {
     }
 
     override fun swigDirectorDisconnect() {
-        super.swigDirectorDisconnect()
+
         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name}")
+        super.swigDirectorDisconnect()
     }
 
     override fun swigReleaseOwnership() {
-        super.swigReleaseOwnership()
+
         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name}")
+        super.swigReleaseOwnership()
     }
 
     override fun swigTakeOwnership() {
-        super.swigTakeOwnership()
+
         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name}")
+        super.swigTakeOwnership()
     }
 
     override fun getInfo(): CallInfo? {
@@ -93,8 +105,9 @@ class CallExt(account: SipAccountExt, callId: Int) : Call(account, callId) {
     }
 
     override fun setUserData(user_data: SWIGTYPE_p_void?) {
-        super.setUserData(user_data)
+
         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name}")
+        super.setUserData(user_data)
     }
 
     override fun getUserData(): SWIGTYPE_p_void {
@@ -108,73 +121,88 @@ class CallExt(account: SipAccountExt, callId: Int) : Call(account, callId) {
     }
 
     override fun makeCall(dst_uri: String?, prm: CallOpParam?) {
-        super.makeCall(dst_uri, prm)
+        setMediaParams(prm!!)
+        prm.opt?.flag = pjsua_call_flag.PJSUA_CALL_INCLUDE_DISABLED_MEDIA.swigValue().toLong()
         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name}")
+        super.makeCall(dst_uri, prm)
     }
 
     override fun answer(prm: CallOpParam?) {
-        super.answer(prm)
+
         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name}")
+        super.answer(prm)
     }
 
     override fun hangup(prm: CallOpParam?) {
-        super.hangup(prm)
+
         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name}")
+        super.hangup(prm)
     }
 
     override fun setHold(prm: CallOpParam?) {
-        super.setHold(prm)
+
         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name}")
+        super.setHold(prm)
     }
 
     override fun reinvite(prm: CallOpParam?) {
-        super.reinvite(prm)
+
         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name}")
+        super.reinvite(prm)
     }
 
     override fun update(prm: CallOpParam?) {
-        super.update(prm)
+
         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name}")
+        super.update(prm)
     }
 
     override fun xfer(dest: String?, prm: CallOpParam?) {
-        super.xfer(dest, prm)
+
         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name}")
+        super.xfer(dest, prm)
     }
 
     override fun xferReplaces(dest_call: Call?, prm: CallOpParam?) {
-        super.xferReplaces(dest_call, prm)
+
         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name}")
+        super.xferReplaces(dest_call, prm)
     }
 
     override fun processRedirect(cmd: pjsip_redirect_op?) {
-        super.processRedirect(cmd)
+
         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name}")
+        super.processRedirect(cmd)
     }
 
     override fun dialDtmf(digits: String?) {
-        super.dialDtmf(digits)
+
         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name}")
+        super.dialDtmf(digits)
     }
 
     override fun sendDtmf(param: CallSendDtmfParam?) {
-        super.sendDtmf(param)
+
         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name}")
+        super.sendDtmf(param)
     }
 
     override fun sendInstantMessage(prm: SendInstantMessageParam?) {
-        super.sendInstantMessage(prm)
+
         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name}")
+        super.sendInstantMessage(prm)
     }
 
     override fun sendTypingIndication(prm: SendTypingIndicationParam?) {
-        super.sendTypingIndication(prm)
+
         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name}")
+        super.sendTypingIndication(prm)
     }
 
     override fun sendRequest(prm: CallSendRequestParam?) {
-        super.sendRequest(prm)
+
         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name}")
+        super.sendRequest(prm)
     }
 
     override fun dump(with_media: Boolean, indent: String?): String {
@@ -193,8 +221,9 @@ class CallExt(account: SipAccountExt, callId: Int) : Call(account, callId) {
     }
 
     override fun vidSetStream(op: pjsua_call_vid_strm_op?, param: CallVidSetStreamParam?) {
-        super.vidSetStream(op, param)
+
         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name}")
+        super.vidSetStream(op, param)
     }
 
     override fun getStreamInfo(med_idx: Long): StreamInfo {
@@ -213,13 +242,15 @@ class CallExt(account: SipAccountExt, callId: Int) : Call(account, callId) {
     }
 
     override fun processMediaUpdate(prm: OnCallMediaStateParam?) {
-        super.processMediaUpdate(prm)
+
         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name}")
+        super.processMediaUpdate(prm)
     }
 
     override fun processStateChange(prm: OnCallStateParam?) {
-        super.processStateChange(prm)
+
         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name}")
+        super.processStateChange(prm)
     }
 
     override fun onCallState(prm: OnCallStateParam?) {
@@ -245,8 +276,9 @@ class CallExt(account: SipAccountExt, callId: Int) : Call(account, callId) {
     }
 
     override fun onCallTsxState(prm: OnCallTsxStateParam?) {
-        super.onCallTsxState(prm)
+
         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name}")
+        super.onCallTsxState(prm)
     }
 
 
@@ -262,7 +294,6 @@ class CallExt(account: SipAccountExt, callId: Int) : Call(account, callId) {
     }
 
     override fun onCallMediaState(prm: OnCallMediaStateParam?) {
-        super.onCallMediaState(prm)
         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name} before info")
         if (!updateCallInfo()) {
             return
@@ -272,14 +303,13 @@ class CallExt(account: SipAccountExt, callId: Int) : Call(account, callId) {
         for (i in 0 until mediaInfoVector.size()) {
             val mediaInfo = mediaInfoVector[i.toInt()]
             if (mediaInfo.type == pjmedia_type.PJMEDIA_TYPE_AUDIO && mediaInfo.status == pjsua_call_media_status.PJSUA_CALL_MEDIA_ACTIVE) {
-                var mAudioMedia = AudioMedia.typecastFromMedia(getMedia(i))
+                val mAudioMedia = AudioMedia.typecastFromMedia(getMedia(i))
                 if (mAudioMedia != null) {
                     try {
                        SipService.getInstance().endPoint.audDevManager().captureDevMedia.startTransmit(mAudioMedia)
                         mAudioMedia.startTransmit(SipService.getInstance().endPoint.audDevManager().playbackDevMedia)
-//                        Log.e("new_logsCall", "onCallMediaState: isMute?:$mCallAudioOnMute")
-                        mAudioMedia.adjustRxLevel(1f)
-                        mAudioMedia.adjustTxLevel(1f)
+                        mAudioMedia.adjustRxLevel(1.5f)
+                        mAudioMedia.adjustTxLevel(1.5f)
                     } catch (e: Exception) {
                         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name} Exception")
                     }
@@ -290,73 +320,92 @@ class CallExt(account: SipAccountExt, callId: Int) : Call(account, callId) {
     }
 
     override fun onCallSdpCreated(prm: OnCallSdpCreatedParam?) {
-        super.onCallSdpCreated(prm)
+
         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name}")
+        super.onCallSdpCreated(prm)
     }
 
     override fun onStreamCreated(prm: OnStreamCreatedParam?) {
-        super.onStreamCreated(prm)
+
         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name}")
+        super.onStreamCreated(prm)
     }
 
     override fun onStreamDestroyed(prm: OnStreamDestroyedParam?) {
-        super.onStreamDestroyed(prm)
         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name}")
+        try{
+            streamInfo = getStreamInfo(0)
+            streamStat = getStreamStat(0)
+        }catch (ex : Exception){
+            Timber.e(ex)
+        }
+        super.onStreamDestroyed(prm)
     }
 
     override fun onDtmfDigit(prm: OnDtmfDigitParam?) {
-        super.onDtmfDigit(prm)
+
         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name}")
+        super.onDtmfDigit(prm)
     }
 
     override fun onCallTransferRequest(prm: OnCallTransferRequestParam?) {
-        super.onCallTransferRequest(prm)
+
         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name}")
+        super.onCallTransferRequest(prm)
     }
 
     override fun onCallTransferStatus(prm: OnCallTransferStatusParam?) {
-        super.onCallTransferStatus(prm)
+
         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name}")
+        super.onCallTransferStatus(prm)
     }
 
     override fun onCallReplaceRequest(prm: OnCallReplaceRequestParam?) {
-        super.onCallReplaceRequest(prm)
+
         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name}")
+        super.onCallReplaceRequest(prm)
     }
 
     override fun onCallReplaced(prm: OnCallReplacedParam?) {
-        super.onCallReplaced(prm)
+
         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name}")
+        super.onCallReplaced(prm)
     }
 
     override fun onCallRxOffer(prm: OnCallRxOfferParam?) {
-        super.onCallRxOffer(prm)
+
         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name}")
+        super.onCallRxOffer(prm)
     }
 
     override fun onCallRxReinvite(prm: OnCallRxReinviteParam?) {
-        super.onCallRxReinvite(prm)
+
         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name}")
+        super.onCallRxReinvite(prm)
     }
 
     override fun onCallTxOffer(prm: OnCallTxOfferParam?) {
-        super.onCallTxOffer(prm)
+
         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name}")
+        super.onCallTxOffer(prm)
     }
 
     override fun onInstantMessage(prm: OnInstantMessageParam?) {
-        super.onInstantMessage(prm)
+
         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name}")
+        super.onInstantMessage(prm)
     }
 
     override fun onInstantMessageStatus(prm: OnInstantMessageStatusParam?) {
-        super.onInstantMessageStatus(prm)
+
         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name}")
+        super.onInstantMessageStatus(prm)
     }
 
     override fun onTypingIndication(prm: OnTypingIndicationParam?) {
-        super.onTypingIndication(prm)
+
         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name}")
+        super.onTypingIndication(prm)
     }
 
     override fun onCallRedirected(prm: OnCallRedirectedParam?): pjsip_redirect_op {
@@ -365,26 +414,34 @@ class CallExt(account: SipAccountExt, callId: Int) : Call(account, callId) {
     }
 
     override fun onCallMediaTransportState(prm: OnCallMediaTransportStateParam?) {
-        super.onCallMediaTransportState(prm)
+
         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name}")
+        super.onCallMediaTransportState(prm)
         if (prm?.state == pjsua_med_tp_st.PJSUA_MED_TP_CREATING) {
             configureCodecs()
         }
     }
 
     override fun onCallMediaEvent(prm: OnCallMediaEventParam?) {
-        super.onCallMediaEvent(prm)
         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name}")
+
+        if(prm?.ev?.type == pjmedia_event_type.PJMEDIA_EVENT_FMT_CHANGED){
+            //TODO: do code here for video frame sizing
+        }
+
+        super.onCallMediaEvent(prm)
     }
 
     override fun onCreateMediaTransport(prm: OnCreateMediaTransportParam?) {
-        super.onCreateMediaTransport(prm)
+
         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name}")
+        super.onCreateMediaTransport(prm)
     }
 
     override fun onCreateMediaTransportSrtp(prm: OnCreateMediaTransportSrtpParam?) {
-        super.onCreateMediaTransportSrtp(prm)
+
         Timber.e("CallExt: ${object : Any() {}.javaClass.enclosingMethod.name}")
+        super.onCreateMediaTransportSrtp(prm)
     }
 
     fun configureCodecs() {
@@ -418,5 +475,10 @@ class CallExt(account: SipAccountExt, callId: Int) : Call(account, callId) {
         val activeNetworkInfo =
             (App.getInstance().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager).activeNetworkInfo
         return activeNetworkInfo != null && activeNetworkInfo.type == ConnectivityManager.TYPE_WIFI
+    }
+
+    private fun setMediaParams(param: CallOpParam) {
+        param.opt.audioCount = 1
+        param.opt.videoCount = 0.toLong()
     }
 }
