@@ -1,6 +1,8 @@
 package com.example.sipdemo.ui
 
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.ColorFilter
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -36,14 +38,7 @@ class MainActivity : BaseActivity() {
         val navView: BottomNavigationView = binding.navView
 
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-//        val appBarConfiguration = AppBarConfiguration(
-//            setOf(
-//                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
-//            )
-//        )
-//        setupActionBarWithNavController(navController, appBarConfiguration)
+
         navView.setupWithNavController(navController)
 
         startService(Intent(this, SipService::class.java))
@@ -56,6 +51,7 @@ class MainActivity : BaseActivity() {
 
     override fun connectionEstablished() {
         binding.tvStatus.text = "Connected"
+        binding.ivConnectivity.setColorFilter(Color.GREEN)
     }
 
 }

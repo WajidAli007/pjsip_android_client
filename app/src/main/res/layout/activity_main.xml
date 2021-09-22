@@ -8,29 +8,36 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
+        android:background="@color/purple_700"
         android:layout_height="?attr/actionBarSize"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
+        <ImageView
+            android:id="@+id/ivConnectivity"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="4dp"
+            android:src="@drawable/ic_connecting_1_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/tvStatus"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginStart="4dp"
+            android:gravity="center_vertical"
             android:text="Connecting..."
-            android:gravity="center"
+            android:textColor="@color/white"
             android:textSize="24sp"
             android:textStyle="bold"
-            />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/darker_gray"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivConnectivity"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
